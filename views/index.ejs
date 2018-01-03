@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+  </head>
+  <body>
+      <header>
+          <!-- header-top-area-start -->
+          <div class="header-top-area gray-bg-1">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6 col-sm-5 col-xs-12">
+                  <div class="header-left-wrapper">
+                    <ul class="header-top-text">
+                      <li>E-mail Address : tutoring@mail.com</li>
+                    </ul>
+                    <ul class="header-top-text hidden-sm hidden-xs">
+                      <li>Contact Number : +003457289</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-7 col-xs-12">
+                  <div class="header-right-wrapper">
+                    
+                    <ul class="header-right-text floatright">
+                      <li><a href="login.html">Login</a></li>
+                      <li><a href="register.html">Register</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- header-top-area-end -->
+        </header>
+    <h1>welcome to the <%= title %></h1>
+    <p>
+      <ul>
+        <% users.forEach(function(user){ %>
+          <li><%- user.username %></li>
+        <% }); %>
+      </ul>
+    </p>
+    <script src="/js/jquery-latest.min.js"></script>
+    <script src="/js/tether.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+  </body>
+</html>
