@@ -1,9 +1,9 @@
 var models  = require('../models');
 exports.index = (req, res, next) => {
-    models.User.findAll().then(function(users) {
+    models.Admin.findAll().then(function(admins) {
         res.render('public/index', {
           title: 'Home Page',
-          users: users
+          admins: admins
         });
       });
 }
