@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="EducationApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Authetification</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/admin/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/admin/css/ionicons.min.css">
+    <link rel="stylesheet" href="/admin/css/Admin.css">
+</head>
+<body class="hold-transition login-page" ng-controller="LoginController">
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="/">
+                <b>Site Name</b>
+            </a>
+        </div>
+        <div class="login-box-body">
+            <form name="LoginForm" ng-submit="SendLogin($event)" novalidate>
+                <div class="form-group has-feedback" ng-class="{ 'has-error' : LoginForm.username.$invalid && !LoginForm.username.$pristine }">
+                    <input type="text" class="form-control" placeholder="Nom d'utilisateur" name="username" ng-model="login.username" ng-minlength="3" ng-required="true">
+                    <span class="fa fa-user form-control-feedback"></span>
+                    <p data-ng-show="LoginForm.username.$dirty&&LoginForm.username.$invalid" class="help-block">
+                            <span data-ng-show="LoginForm.username.$error.required">
+                                Champ Obligatoire
+                            </span>
+                        </p>
+                    <p ng-show="LoginForm.username.$error.minlength" class="help-block">Le nom d'utilisateur est trop court.</p>
+                </div>
+                <div class="form-group has-feedback" ng-class="{ 'has-error' : LoginForm.password.$invalid && !LoginForm.password.$pristine }">
+                    <input type="password" class="form-control" placeholder="Mot de passe"name="password" ng-model="login.password" ng-required="true" ng-minlength="6">
+                    <span class="fa fa-lock form-control-feedback"></span>
+                    <p data-ng-show="LoginForm.password.$dirty&&LoginForm.password.$invalid" class="help-block">
+                        <span data-ng-show="LoginForm.password.$error.required">
+                            Champ Obligatoire
+                        </span>
+                    </p>
+                    <p ng-show="LoginForm.password.$error.minlength" class="help-block">Le mot de passe est trop courte.</p>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-flat" ng-disabled="LoginForm.$invalid">Se Connecter</button>
+                </div>
+            </form>
+            <div class="alert alert-danger error-holder" ng-show="<%-error%>"><%-message%></div>
+        </div>
+    </div>
+    <script src="/admin/js/jquery-latest.min.js"></script>
+    <script src="/admin/js/jquery-ui.min.js"></script>
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <script src="/admin/js/bootstrap.min.js"></script>
+    <script src="/admin/js/jquery.slimscroll.min.js"></script>
+    <script src="/admin/js/adminlte.js"></script>
+    <script src="/admin/js/angularjs.min.js"></script>
+    <script src="/admin/js/Angular/routes.js"></script>
+    <script src="/admin/js/Angular/Controllers/LoginController.js"></script>
+</body>
+</html>

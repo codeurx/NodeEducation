@@ -1,7 +1,5 @@
 var AdminController = require('../controllers/admin');
-var bcrypt = require('bcrypt-nodejs');
-
-module.exports = function(app,passport){
+module.exports = function(app){
   app.get('/Administration', IsAdminLoggedIn, AdminController.index);
   app.get('/Administration/Auth', AdminController.Auth);
   app.post('/Administration/Auth', AdminController.PostAuth);

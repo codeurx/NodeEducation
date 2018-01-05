@@ -7,7 +7,12 @@
 var app = require('../app');
 var debug = require('debug')('express-sequelize');
 var http = require('http');
+var passport = require('passport');
+//Models
 var models = require('../models');
+//Routes
+require('../routes/admin')(app);
+require('../routes/public')(app);
 require('dotenv').config();
 
 /**
