@@ -19,15 +19,15 @@
         </div>
         <div class="login-box-body">
             <form name="LoginForm" ng-submit="SendLogin($event)" novalidate>
-                <div class="form-group has-feedback" ng-class="{ 'has-error' : LoginForm.username.$invalid && !LoginForm.username.$pristine }">
-                    <input type="text" class="form-control" placeholder="Nom d'utilisateur" name="username" ng-model="login.username" ng-minlength="3" ng-required="true">
+                <div class="form-group has-feedback" ng-class="{ 'has-error' : LoginForm.email.$invalid && !LoginForm.email.$pristine }">
+                    <input type="text" class="form-control" placeholder="Nom d'utilisateur" name="email" ng-model="login.email" ng-minlength="3" ng-required="true">
                     <span class="fa fa-user form-control-feedback"></span>
-                    <p data-ng-show="LoginForm.username.$dirty&&LoginForm.username.$invalid" class="help-block">
-                            <span data-ng-show="LoginForm.username.$error.required">
+                    <p data-ng-show="LoginForm.email.$dirty&&LoginForm.email.$invalid" class="help-block">
+                            <span data-ng-show="LoginForm.email.$error.required">
                                 Champ Obligatoire
                             </span>
                         </p>
-                    <p ng-show="LoginForm.username.$error.minlength" class="help-block">Le nom d'utilisateur est trop court.</p>
+                    <p ng-show="LoginForm.email.$error.minlength" class="help-block">Le nom d'utilisateur est trop court.</p>
                 </div>
                 <div class="form-group has-feedback" ng-class="{ 'has-error' : LoginForm.password.$invalid && !LoginForm.password.$pristine }">
                     <input type="password" class="form-control" placeholder="Mot de passe"name="password" ng-model="login.password" ng-required="true" ng-minlength="6">

@@ -1,6 +1,7 @@
 var exports = module.exports = {}
 var models  = require('../models');
-var passport = require('passport');
+var passport = require('passport')
+require('../config/passport')(passport,models.admin);
 exports.index = (req, res, next) => {
     models.Admin.findAll().then(function(admins) {
         res.render('admin/index', {
@@ -10,7 +11,6 @@ exports.index = (req, res, next) => {
       });
 }
 exports.Auth = (req, res, next) => {
-  require('../config/passport')(passport,models.admin);
   res.render('admin/auth',{error:false,message:''});
 }
 exports.PostAuth = (req,res,next)=>{
