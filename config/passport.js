@@ -20,20 +20,18 @@ module.exports = function (passport,user) {
     passport.use('local-signin', new LocalStrategy({ usernameField: 'email', passwordField: 'password', passReqToCallback: true },
         function (req, email, password, done) {
             var User = user;
-            var isValidPassword = function (userpass, password) {
-                return password == userpass;
-            }
+            var isValidPassword = function(userpass,password){
+                return bCrypt.compareSync(password, userpass);
+              }
             User.findOne({ where: { email: email } }).then(function (user) {
                 if (!user) {
-                    return done(null, false, {message:'fuck'});
+                    return done(null, false, {message:0});
                 }
-                console.log(user.username)
                 if (!isValidPassword(user.password, password)) {
-                    return done(null, false, {message:'pass'});
+                    return done(null, false, {message:0});
                 }
                 var userinfo = user.get();
-                console.log(userinfo)
-                return done(null, {a:'qsd'});
+                return done(null,userinfo,{message:'ok'});
             }).catch(function (err) {
                 console.log("Error:",err);
 
@@ -41,4 +39,63 @@ module.exports = function (passport,user) {
             });
         }
     ));
+
+    //Admin Sign Up
+    passport.use('local-signup', new LocalStrategy(
+
+        {           
+          usernameField : 'email',
+          passwordField : 'password',
+          passReqToCallback : true // allows us to pass back the entire request to the callback
+        },
+    
+        function(req, email, password, done){
+           
+    
+          var generateHash = function(password) {
+          return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
+          };
+    
+           User.findOne({where: {email:email}}).then(function(user){
+    
+          if(user)
+          {
+            return done(null, false, {message : 'That email is already taken'} );
+          }
+    
+          else
+          {
+            var userPassword = generateHash(password);
+            var data =
+            { email:email,
+            password:userPassword,
+            firstname: req.body.firstname,
+            lastname: req.body.lastname
+            };
+    
+    
+            User.create(data).then(function(newUser,created){
+              if(!newUser){
+                return done(null,false);
+              }
+    
+              if(newUser){
+                return done(null,newUser);
+                
+              }
+    
+    
+            });
+          }
+    
+    
+        }); 
+    
+    
+    
+      }
+    
+    
+    
+      ));
 }

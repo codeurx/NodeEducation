@@ -10,8 +10,11 @@ exports.index = (req, res, next) => {
         });
       });
 }
+exports.SignUp = (req, res, next) => {
+  res.render('admin/signup');
+}
 exports.Auth = (req, res, next) => {
-  res.render('admin/auth',{error:false,message:''});
+  res.render('admin/auth');
 }
 exports.PostAuth = (req,res,next)=>{
   passport.authenticate('local-signin',  { successRedirect: '/Administration/',failureRedirect: '/Administration/Auth'});
