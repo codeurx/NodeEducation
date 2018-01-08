@@ -6,7 +6,7 @@ module.exports = function (app, passport) {
   });
   app.get('/Administration', IsAdminLoggedIn, AdminController.index);
   app.get('/Administration/Signup', AdminController.SignUp);
-  app.post('/Administration/Signup', passport.authenticate('local-signup', { successRedirect: '/dashboard', failureRedirect: '/signup' }));
+  app.post('/Administration/Signup', passport.authenticate('local-signup', { successRedirect: '/Administration', failureRedirect: '/signup' }));
   app.get('/Administration/Auth', RedirectIfAuth, AdminController.Auth);
   app.post('/Administration/Auth', AdminController.PostAuth);
   function RedirectIfAuth(req, res, next) {
