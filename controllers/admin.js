@@ -1,14 +1,9 @@
 var exports = module.exports = {}
 var models  = require('../models');
 var passport = require('passport')
-require('../config/passport')(passport,models.admin);
+require('../config/passport')(passport,models.admin,'admin');
 exports.index = (req, res, next) => {
-    models.Admin.findAll().then(function(admins) {
-        res.render('admin/index', {
-          title: 'Home Page',
-          admins: admins
-        });
-      });
+  res.render('admin/index', {title: 'Home Page',admin:req.user});
 }
 exports.SignUp = (req, res, next) => {
   res.render('admin/signup');

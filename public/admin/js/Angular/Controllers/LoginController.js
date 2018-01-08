@@ -7,6 +7,8 @@ $scope.SendLogin = function(e){
             $("#error").slideDown(500, function() {
                 $("#error").delay(500).slideUp(500);
              }); 
+        }else{
+            window.location.href = '/Administration/';
         }
       });
     e.preventDefault();
