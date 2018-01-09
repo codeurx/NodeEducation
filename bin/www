@@ -27,13 +27,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({secret: 'My Great Secret',resave: true, saveUninitialized:true}));
+app.use(session({secret: 'My Great Secret here',resave: true, saveUninitialized:true}));
 app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(express.static(path.join(__dirname, '../public')));
-//Models
 var models = require('../models');
-//Routes
 require('../routes/admin')(app,passport);
 require('../routes/public')(app);
 app.use(function(req, res, next) {
