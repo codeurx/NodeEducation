@@ -3,7 +3,7 @@ var models  = require('../models');
 var passport = require('passport')
 require('../config/passport')(passport,models.admin,'admin');
 exports.index = (req, res, next) => {
-  res.render('admin/index', {title: 'Home Page',admin:req.user});
+  res.render('admin/index', {title: 'Administration',page_name:'home',admin:req.user});
 }
 exports.SignUp = (req, res, next) => {
   res.render('admin/signup');
