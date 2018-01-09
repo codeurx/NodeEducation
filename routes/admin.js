@@ -9,6 +9,7 @@ module.exports = function (app, passport) {
   app.post('/Administration/Signup', passport.authenticate('local-signup', { successRedirect: '/Administration', failureRedirect: '/signup' }));
   app.get('/Administration/Auth', RedirectIfAuth, AdminController.Auth);
   app.post('/Administration/Auth', AdminController.PostAuth);
+  app.get('/Administration/Utilisateurs', AdminController.Users);
   function RedirectIfAuth(req, res, next) {
     if (req.isAuthenticated() && req.user.role == 'admin') {
       res.redirect('/Administration/');

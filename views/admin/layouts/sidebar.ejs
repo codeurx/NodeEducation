@@ -2,13 +2,13 @@
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <ul class="sidebar-menu" data-widget="tree">
-            <li class="<% if(page_name == 'home') { %> active <% } %> treeview">
+            <li class="<% if(page_name == 'Home') { %> active <% } %>">
                 <a href="/Administration/">
                     <i class="fa fa-dashboard"></i>
                     <span>Administration</span>
                 </a>
             </li>
-            <li class="treeview">
+            <li class="<% if(page_name == 'Users') { %> active <% } %>">
                 <a href="/Administration/Utilisateurs">
                     <i class="fa fa-users"></i>
                     <span>Gestion Utilisateurs</span>
